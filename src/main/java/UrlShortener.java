@@ -1,8 +1,5 @@
 import java.time.LocalDateTime;
-import java.util.Map;
-import java.util.Optional;
-import java.util.PriorityQueue;
-import java.util.UUID;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class UrlShortener {
@@ -11,7 +8,7 @@ public class UrlShortener {
   public static final String PROVIDED_URL_IS_INVALID = "Provided URL is invalid";
   public static final String SHORT_URL_IS_INVALID = "Short URL is invalid: ";
   private Map<String, UrlCacheEntry> shortToLongUrlMap = new ConcurrentHashMap<>();
-  private PriorityQueue<UrlCacheEntry> expirationQueue = new PriorityQueue<>();
+  private Queue<UrlCacheEntry> expirationQueue = new LinkedList<>();
   private static UrlShortener instance = new UrlShortener();
   private final Object lock = new Object();
 
